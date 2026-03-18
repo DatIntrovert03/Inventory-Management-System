@@ -103,6 +103,7 @@ namespace Inventory_Management_System.ViewModels
             ReOrderLevel = 10;
             SaveCommand = new RelayCommand(SaveItem, CanSaveitem);
             UpdateCommand = new RelayCommand(UpdateItem, CanUpdateItem);
+            LoadItems();
           
         }
         private bool CanSaveitem(object obj)
@@ -122,14 +123,11 @@ namespace Inventory_Management_System.ViewModels
             InventoryDBContext db = new InventoryDBContext();
             db.items.Add(item);
             db.SaveChanges();
+            LoadItems();
             // refresh list
-           
+
             // clear inputs
-            Name = string.Empty;
-            Details = string.Empty;
-            Price = 0;
-            MeasuringUnit = string.Empty;
-            ReOrderLevel = 10;
+            ClearFields();
         }
         private bool CanUpdateItem(object obj)
         {
@@ -149,12 +147,21 @@ namespace Inventory_Management_System.ViewModels
                 db.SaveChanges();
         
             }
+            LoadItems();
+            ClearFields();
         }
         private void LoadItems()
         {
             InventoryDBContext db = new InventoryDBContext();
             Items = new ObservableCollection<item>(db.items);
         }
-       
+        private void ClearFields()
+        {
+            Name = string.Empty;
+            Details = string.Empty;
+            Price = 0;
+            MeasuringUnit = string.Empty;
+            ReOrderLevel = 10;
+        }
     }
 }
