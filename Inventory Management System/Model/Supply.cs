@@ -8,7 +8,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Inventory_Management_System.Model
 {
-    internal class Supply
+    public class Supply
     {
         [Key]
         public int SupplyId { get; set; }
@@ -18,6 +18,8 @@ namespace Inventory_Management_System.Model
 
         [ForeignKey("SupplierId")]
         public virtual Supplier Supplier { get; set; }
+        
+        public virtual ICollection<SupplyDetail> SupplyDetails { get; set; }
 
     }
 }

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Inventory_Management_System.Model
 {
-    internal class SupplyDetail
+    public class SupplyDetail
     {
         [Key]
         public int SupplyDetailId { get; set; }
@@ -18,6 +18,8 @@ namespace Inventory_Management_System.Model
         public int ItemId { get; set; }
         [Required]
         public double PurchasePrice { get; set; }
+        [Required]
+        public double Quantity { get; set; }
 
         [ForeignKey("ItemId")]
         public virtual item Item { get; set; }

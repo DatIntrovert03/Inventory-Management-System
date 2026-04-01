@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Inventory_Management_System.Model
 {
-    internal class Supplier
+    public class Supplier
     {
         [Key]
         public int SupplierId { get; set; }

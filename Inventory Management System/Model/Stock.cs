@@ -18,7 +18,12 @@ namespace Inventory_Management_System.Model
         public int SupplyDetailId { get; set; }
         [Required]
         public double StockValue { get; set; }
-        [ForeignKey("")]
-        public virtual item item { get;set }
+
+        [ForeignKey("ItemId")]
+        public virtual item item { get; set; }
+
+        [ForeignKey("SupplyDetailId")]
+        public virtual SupplyDetail SupplyDetail { get; set; }
+
     }
 }
