@@ -1,4 +1,6 @@
-﻿using System.Text;
+﻿using Inventory_Management_System.View;
+using Inventory_Management_System.Views;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -19,6 +21,18 @@ namespace Inventory_Management_System
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void BtnItems_Click(object sender, RoutedEventArgs e)
+        {
+            ItemsView view=new ItemsView();
+            view.ShowDialog();
+        }
+
+        private void BtnSuppliers_Click(object sender, RoutedEventArgs e)
+        {
+            SuppliersView view=new SuppliersView();
+            view.ShowDialog();
         }
     }
 }

@@ -16,6 +16,39 @@ namespace Inventory_Management_System.Model
         public DbSet<SupplyDetail> SupplyDetails { get; set; }
         public DbSet<Stock> Stocks { get; set; }
 
-       pr
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Stock>()
+                .HasRequired(s => s.item)
+                .WithMany()
+                .HasForeignKey(i => i.ItemId)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Stock>()
+                .HasRequired(s => s.SupplyDetail)
+                .WithMany()
+                .HasForeignKey(sd => sd.SupplyDetailId)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<SupplyDetail>()
+                .HasRequired(s => s.Item)
+                .WithMany()
+                .HasForeignKey(i => i.ItemId)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<SupplyDetail>()
+                .HasRequired(sd => sd.Supply)
+                .WithMany()
+                .HasForeignKey(s => s.SupplyId)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Supply>()
+                .HasRequired(s => s.Supplier)
+                .WithMany()
+                .HasForeignKey(sp => sp.SupplierId)
+                .WillCascadeOnDelete(false);
+
+            base.OnModelCreating(modelBuilder);
+        }
     }
 }

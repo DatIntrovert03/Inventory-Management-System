@@ -136,7 +136,7 @@ namespace Inventory_Management_System.ViewModels
         private void UpdateItem(object obj)
         {
             InventoryDBContext db = new InventoryDBContext();
-            item item = db.items.Find(SelectedItem.itemId);
+            item item = db.items.Find(SelectedItem.ItemId);
             if(item!=null)
             {
                 item.Name = Name;
