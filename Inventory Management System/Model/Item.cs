@@ -10,7 +10,7 @@ namespace Inventory_Management_System.Model
     public class item
     {
         [Key]
-        public int itemId { get; set; }
+        public int ItemId { get; set; }
 
         [Required]
         [MaxLength(50)]
